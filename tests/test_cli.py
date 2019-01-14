@@ -67,7 +67,6 @@ def test_data_valid(monkeypatch):
     result = runner.invoke(l8, ["data", LANDSAT_SCENE_C1])
     feats = json.loads(result.output)["features"]
     assert len(feats) == 1
-    assert len(feats[0]["geometry"]["coordinates"][0]) == 3681
     assert not result.exception
     assert result.exit_code == 0
 
@@ -80,7 +79,6 @@ def test_data_valid_raw(monkeypatch):
     result = runner.invoke(l8, ["data", LANDSAT_SCENE_C1, "--overview-level", "0"])
     feats = json.loads(result.output)["features"]
     assert len(feats) == 1
-    assert len(feats[0]["geometry"]["coordinates"][0]) == 11031
     assert not result.exception
     assert result.exit_code == 0
 
