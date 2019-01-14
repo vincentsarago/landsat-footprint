@@ -2,6 +2,11 @@
 
 Create Landsat8 footprint from data and metadata
 
+[![CircleCI](https://circleci.com/gh/vincentsarago/landsat-footprint.svg?style=svg)](https://circleci.com/gh/vincentsarago/landsat-footprint)
+
+[![codecov](https://codecov.io/gh/vincentsarago/landsat-footprint/branch/master/graph/badge.svg)](https://codecov.io/gh/vincentsarago/landsat-footprint)
+
+
 ```
 $ git clone http://github.com/developmentseed/landsat-footprint-benchmark
 $ cd landsat-footprint
