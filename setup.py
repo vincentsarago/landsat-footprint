@@ -15,7 +15,7 @@ with open("README.md") as f:
     readme = f.read()
 
 # Runtime requirements.
-inst_reqs = ["click", "rasterio[s3]", "rio-tiler~=1.0rc2", "rio_toa", "shapely"]
+inst_reqs = ["click", "rasterio[s3]", "rio-tiler~=1.1", "rio_toa", "shapely"]
 
 extra_reqs = {"test": ["pytest", "pytest-cov", "pre-commit", "mock"]}
 

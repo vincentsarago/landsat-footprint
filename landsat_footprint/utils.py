@@ -4,7 +4,7 @@ import re
 from urllib.request import urlopen
 
 from rio_toa import toa_utils
-from rio_tiler.utils import landsat_parse_scene_id
+from rio_tiler.landsat8 import _landsat_parse_scene_id
 
 
 def _parse_ang_txt(angtxt):
@@ -54,7 +54,7 @@ def landsat_get_ang(sceneid):
         returns a JSON like object with the metadata.
     """
 
-    scene_params = landsat_parse_scene_id(sceneid)
+    scene_params = _landsat_parse_scene_id(sceneid)
     s3_key = scene_params["key"]
     meta_file = f"http://landsat-pds.s3.amazonaws.com/{s3_key}_ANG.txt"
     metadata = str(urlopen(meta_file).read().decode())

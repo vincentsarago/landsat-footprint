@@ -8,7 +8,7 @@ import rasterio
 from rasterio.vrt import WarpedVRT
 from rasterio.features import dataset_features
 from rio_toa.toa_utils import _get_bounds_from_metadata
-from rio_tiler.utils import landsat_get_mtl, landsat_parse_scene_id
+from rio_tiler.landsat8 import _landsat_get_mtl, _landsat_parse_scene_id
 from shapely.geometry import shape, mapping
 
 from landsat_footprint.utils import landsat_get_ang
@@ -28,7 +28,7 @@ def metadata(sceneid):
     """Create footprint from metadata."""
     geom = {"type": "FeatureCollection", "features": []}
 
-    metadata = landsat_get_mtl(sceneid)
+    metadata = _landsat_get_mtl(sceneid)
     m = metadata["L1_METADATA_FILE"]["PRODUCT_METADATA"]
     bbox_geometry = {
         "type": "Feature",
@@ -98,7 +98,7 @@ def metadata(sceneid):
 @click.option("--simplify", is_flag=True, help="Simplify output shape.")
 def data(sceneid, band, overview_level, nodata, simplify):
     """Create footprint from data."""
-    meta = landsat_parse_scene_id(sceneid)
+    meta = _landsat_parse_scene_id(sceneid)
     landsat_prefix = os.path.join(LANDSAT_BUCKET, meta["key"])
     s3_path = f"{landsat_prefix}_B{band}.TIF"
 
